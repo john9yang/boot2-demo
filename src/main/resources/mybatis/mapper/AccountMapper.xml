@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jhclass.dao.AccountMapper">
+
+	<resultMap id="BaseResultMap" type="jhclass.entity.Account">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="name" jdbcType="VARCHAR" property="name" />
+		<result column="balance" jdbcType="INTEGER" property="balance" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+         id,name,balance
+	</sql>
+
+
+    <insert id="insert" parameterType="jhclass.entity.Account">
+        INSERT INTO account(id,name,balance)
+        VALUES
+        (#{id,jdbcType=INTEGER},#{name,jdbcType=INTEGER},#{balance,jdbcType=INTEGER})
+    </insert>
+
+</mapper>
