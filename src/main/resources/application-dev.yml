@@ -6,6 +6,10 @@ spring:
       password: Yjh@rs05
       type: com.alibaba.druid.pool.DruidDataSource
 
+   redis:
+     host: 192.168.218.128
+     port: 7000
+
 
 ## Mybatis 配置
 mybatis:
