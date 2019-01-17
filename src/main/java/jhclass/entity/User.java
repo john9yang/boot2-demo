@@ -14,6 +14,8 @@ public class User {
 
     private Date createTime;
 
+    private String email;
+
     public int getId() {
         return id;
     }
@@ -54,4 +56,11 @@ public class User {
         this.createTime = createTime;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }

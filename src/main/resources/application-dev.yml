@@ -21,4 +21,4 @@ mybatis:
 logging:
   level:
     jhclass.dao: DEBUG
-    org.springframework: DEBUG
+    org.springframework: INFO
