@@ -106,8 +106,9 @@ public class RedisLock {
                     return success;
                 }
             });
+
         } catch (Exception e) {
-            logger.error("setNX redis error, key : {}", key);
+            logger.error("setNX redis error, key : {}", key+e.getMessage());
         }
         return obj != null ? (Boolean) obj : false;
     }
@@ -156,13 +157,11 @@ public class RedisLock {
             if (currentValueStr != null && Long.parseLong(currentValueStr) < System.currentTimeMillis()) {
                 //判断是否为空，不为空的情况下，如果被其他线程设置了值，则第二个条件判断是过不去的
                 // lock is expired
-
                 String oldValueStr = this.getSet(lockKey, expiresStr);
                 //获取上一个锁到期时间，并设置现在的锁到期时间，
                 //只有一个线程才能获取上一个线上的设置时间，因为jedis.getSet是同步的
                 if (oldValueStr != null && oldValueStr.equals(currentValueStr)) {
                     //防止误删（覆盖，因为key是相同的）了他人的锁——这里达不到效果，这里值会被覆盖，但是因为什么相差了很少的时间，所以可以接受
-
                     //[分布式的情况下]:如过这个时候，多个线程恰好都到了这里，但是只有一个线程的设置值和当前值相同，他才有权利获取锁
                     // lock acquired
                     locked = true;
