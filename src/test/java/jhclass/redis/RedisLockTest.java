@@ -2,22 +2,18 @@ package jhclass.redis;
 
 import jhclass.SpringBoot2DemoApplication;
 import jhclass.entity.DemoTask;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.annotation.Resource;
 import java.util.concurrent.*;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
-@RunWith(SpringRunner.class)
+
 @SpringBootTest(classes = SpringBoot2DemoApplication.class)
 public class RedisLockTest {
     @Autowired
